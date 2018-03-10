@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Posts</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+
+      <div class="row">
+
+        		<div th:each="author : ${authors}">
+					<div th:each="post:${author.posts}">
+				            <h2 class="blog-post-title" th:text="${post.title}">Sample blog post</h2>
+			    	        <p class="blog-post-meta">January 1, 2014 by <a href="#" th:text="${author.firstName}">Writer</a></p>
+			        	    <p th:text="${post.body}">Body</p>
+						</div>
+					</div>
+	</div>
+	</div>	
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Posts</strong>
+		</div>
+		
+		 		
+		
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-sm table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th>FirstName</th>
+							<th>SecondName</th>
+							<th>Title</th>
+							<th>Body</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>	
+						<tr th:each="author : ${authors}">
+							<tr th:each="post:${author.posts}">
+								<td th:text="${author.firstName}"></td>
+								<td th:text="${author.secondName}"></td>
+								<td th:text="${post.title}"></td>	
+								<td th:text="${post.body}"></td>								
+							</tr>						
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
